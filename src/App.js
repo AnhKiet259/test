@@ -11,9 +11,11 @@ function App() {
         <h1 header className="app-title"> HỒ SƠ NGƯỜI DÙNG </h1>
       </header>
       <RegisterPage />
-      <div>
-        {/* Các thành phần khác của ứng dụng */}
-        <ThreeScene />
+      <div className="three-d-component-wrapper">
+        {/* Set max-width and max-height for the container */}
+        <div style={{ maxWidth: '60px', maxHeight: '40px', overflow: 'hidden' }}>
+          <ThreeScene />
+        </div>
       </div>
     </div>
   );
