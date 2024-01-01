@@ -11,10 +11,7 @@ function App() {
         <h1 header className="app-title"> HỒ SƠ NGƯỜI DÙNG </h1>
       </header>
       <RegisterPage />
-      <div>
-        {/* Các thành phần khác của ứng dụng */}
-        <ThreeScene />
-      </div>
+      <ThreeScene />
 
     </div>
   );
