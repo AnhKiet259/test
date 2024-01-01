@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import RegisterPage from './Components/RegisterAccount';
 import React from 'react';
-import ThreeScene from './ThreeScene';
+import ThreeScene from './Components/ThreeScene';
 
 function App() {
   return (
