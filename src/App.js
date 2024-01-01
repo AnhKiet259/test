@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import RegisterPage from './Components/RegisterAccount';
+import React from 'react';
+import ThreeScene from './ThreeScene';
 
 function App() {
   return (
