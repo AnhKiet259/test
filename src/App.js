@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import RegisterPage from './RegisterAccount/RegisterAccount';
+import RegisterPage from './Components/RegisterAccount';
 
 function App() {
   return (
@@ -9,6 +9,10 @@ function App() {
         <h1 header className="app-title"> HỒ SƠ NGƯỜI DÙNG </h1>
       </header>
       <RegisterPage />
+      <div>
+        {/* Các thành phần khác của ứng dụng */}
+        <ThreeScene />
+      </div>
     </div>
   );
 }

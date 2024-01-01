@@ -14,6 +14,7 @@ const initFormValue = {
         email: { type: 'string', title: 'Email NGƯỜI DÙNG ' },
         password: { type: 'string', title: 'MÃ SỐ', format: 'password' },
         confirmPassword: { type: 'string', title: 'MÃ SỐ', format: 'password' },
+        date: { type: Date, default: Date.now },
     },
 };
 

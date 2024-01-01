@@ -44,3 +44,16 @@ h1.app-title {
     transform: rotate(360deg);
   }
 }
+
+/* App.css hoặc tệp CSS tương ứng */
+.three-d-component-wrapper {
+  position: fixed;
+  top: 20px;
+  /* Điều chỉnh vị trí top theo yêu cầu của bạn */
+  left: 20px;
+  /* Điều chỉnh vị trí left theo yêu cầu của bạn */
+  width: 200px;
+  /* Đặt kích thước chiều rộng của container */
+  height: 200px;
+  /* Đặt kích thước chiều cao của container */
+}
