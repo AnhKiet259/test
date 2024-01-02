@@ -7,10 +7,10 @@ import ThreeScene from './Components/ThreeScene';
 function App() {
   return (
     <div>
-      <header>
+      {/* <header>
         <h1 header className="app-title"> HỒ SƠ NGƯỜI DÙNG </h1>
       </header>
-      <RegisterPage />
+      <RegisterPage /> */}
       <ThreeScene />
 
     </div>
