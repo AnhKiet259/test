@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import './ThreeDComponent.css'; // Import CSS file
 
 const ThreeScene = () => {
     const sceneRef = useRef(null);
@@ -14,7 +15,7 @@ const ThreeScene = () => {
 
         // Khởi tạo GLTFLoader và tải model
         const loader = new GLTFLoader();
-        loader.load('http://localhost:1880/glb', (gltf) => {
+        loader.load('https://raw.githubusercontent.com/AnhKiet259/Test3D/master/mohinh.glb', (gltf) => {
             // Xử lý mô hình 3D
             const model = gltf.scene;
             // ... (thêm code xử lý mô hình)
