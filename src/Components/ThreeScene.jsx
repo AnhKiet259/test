@@ -8,8 +8,34 @@ const ThreeScene = () => {
 
     useEffect(() => {
         // Khởi tạo scene, camera, renderer, và các biến cần thiết
-        const scene = new THREE.Scene();
+
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 10);
+        camera.position.set(3, 3, 1);
+        camera.lookAt(0, 0, 0);
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff);
+
+        const light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
+        light.position.set(0, 1, 0);
+        scene.add(light);
+
+        const mesh = new THREE.Mesh(
+            new THREE.PlaneGeometry(6, 6),
+            new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false })
+        );
+
+        mesh.rotation.x = -Math.PI / 2;
+        mesh.receiveShadow = true;
+        scene.add(mesh);
+
+        const grid = new THREE.GridHelper(6, 20, 0x000000, 0x000000);
+        grid.material.opacity = 0.1;
+        grid.material.transparent = true;
+        scene.add(grid);
+        const maxContainerWidth = 1000;
+        const maxContainerHeight = 1000;
+        const scaleFactor = Math.min(maxContainerWidth / window.innerWidth, maxContainerHeight / window.innerHeight);
         // ... (thêm code khởi tạo)
 
         // Khởi tạo GLTFLoader và tải model
