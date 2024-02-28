@@ -1,0 +1,8 @@
+.container-wrapper {
+  text-align: center;
+}
+
+.three-js-container {
+  border: 2px solid black;
+  align-items: center;
+}

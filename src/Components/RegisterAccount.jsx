@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./RegisterAccount.css";
-
+import logore from './picgo.png';
 import axios from 'axios';
 
 const initFormValue = {
@@ -34,25 +34,25 @@ export default function RegisterPage() {
         const error = {};
 
         if (isEmptyValue(formValue.firstName)) {
-            error["firstName"] = "first Name is required";
+            error["firstName"] = "Error: First Name is required";
         }
         if (isEmptyValue(formValue.lastName)) {
-            error["lastName"] = "last Name is required";
+            error["lastName"] = "Error: Last Name is required";
         }
         if (isEmptyValue(formValue.email)) {
-            error["email"] = "email is required";
+            error["email"] = "Error: Email is required";
         } else {
             if (!isEmailValid(formValue.email)) {
-                error["email"] = "Email is invalid";
+                error["email"] = "Error: Email is invalid";
             }
         }
         if (isEmptyValue(formValue.password)) {
-            error["passWord"] = "Password is required";
+            error["passWord"] = "Error: Password is required";
         }
         if (isEmptyValue(formValue.confirmPassword)) {
-            error["confirmPassword"] = "Confirm Password is required";
+            error["confirmPassword"] = "Error: Confirm Password is required";
         } else if (formValue.confirmPassword !== formValue.password) {
-            error["confirmPassword"] = "Confirm Password not match";
+            error["confirmPassword"] = "Error: Confirm Password not match";
         }
 
         setFormError(error);
@@ -65,15 +65,29 @@ export default function RegisterPage() {
         setFormValue({
             ...formValue,
             [name]: value,
+            date: new Date().toISOString()
         });
     };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        console.error('Lỗi khi gửi dữ liệu:');
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString();
         if (validateForm()) {
             try {
-                const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/test', formValue);
+                // Tạo một object mới chứa dữ liệu người dùng từ formValue
+                const userData = {
+                    firstName: formValue.firstName,
+                    lastName: formValue.lastName,
+                    email: formValue.email,
+                    password: formValue.password,
+                    confirmPassword: formValue.confirmPassword,
+                    date: formattedDate,
+                };
+
+                // Gửi dữ liệu người dùng mới này
+                const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
                 console.log('Đã gửi dữ liệu thành công:', response.data);
                 // Thực hiện các xử lý tiếp theo, ví dụ: chuyển hướng, hiển thị thông báo thành công, vv.
             } catch (error) {
@@ -88,98 +102,132 @@ export default function RegisterPage() {
     console.log(formError);
 
     return (
-        <div className="register-page">
-            <div className="register-form-container">
-                <h1 className="title">Register account </h1>
+        <div className="limiter">
+            <div className="wrap-login100">
+                <div className="login100-pic js-tilt" data-tilt>
+                    <img src={logore} alt='Logo' />
+                </div>
 
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="First-name" className="form-label">
-                            First Name
-                        </label>
+                <form className="login100-form validate-form" onSubmit={handleSubmit}>
+                    <span className="login100-form-title">
+                        Register
+                    </span>
+
+                    <div
+                        className="wrap-input100 validate-input"
+                    >
                         <input
                             id="first-name"
-                            className="form-control"
+                            className="input100"
                             type="text"
                             name="firstName"
+                            placeholder="FirstName"
                             value={formValue.firstName}
                             onChange={handleChange}
                         />
                         {formError.firstName && (
                             <div className="error-feedback">{formError.firstName}</div>
                         )}
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i class="uil uil-label"></i>
+                        </span>
                     </div>
 
-                    <div className="mb-2">
-                        <label htmlFor="last-name" className="form-label">
-                            Last Name
-                        </label>
+                    <div
+                        className="wrap-input100 validate-input"
+                    >
                         <input
                             id="last-name"
-                            className="form-control"
+                            className="input100"
                             type="text"
                             name="lastName"
+                            placeholder="LastName"
                             value={formValue.lastName}
                             onChange={handleChange}
                         />
                         {formError.lastName && (
                             <div className="error-feedback">{formError.lastName}</div>
                         )}
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i class="uil uil-label"></i>
+                        </span>
                     </div>
 
-                    <div className="mb-2">
-                        <label htmlFor="email" className="form-label">
-                            Email
-                        </label>
+                    <div
+                        className="wrap-input100 validate-input"
+                    >
                         <input
                             id="email"
-                            className="form-control"
+                            className="input100"
                             type="text"
                             name="email"
+                            placeholder="Email"
                             value={formValue.email}
                             onChange={handleChange}
                         />
                         {formError.email && (
                             <div className="error-feedback">{formError.email}</div>
                         )}
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i class="uil uil-envelope" aria-hidden="true"></i>
+                        </span>
                     </div>
 
-                    <div className="mb-2">
-                        <label htmlFor="password" className="form-label">
-                            Password
-                        </label>
+                    <div
+                        className="wrap-input100 validate-input"
+                    >
                         <input
                             id="password"
-                            className="form-control"
+                            className="input100"
                             type="password"
                             name="password"
+                            placeholder="Password"
                             value={formValue.password}
                             onChange={handleChange}
                         />
                         {formError.passWord && (
                             <div className="error-feedback">{formError.passWord}</div>
                         )}
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i class="uil uil-lock-alt"></i>
+                        </span>
                     </div>
 
-                    <div className="mb-2">
-                        <label htmlFor="confirm-password" className="form-label">
-                            Confirm Password
-                        </label>
+                    <div
+                        className="wrap-input100 validate-input"
+                    >
                         <input
                             id="confirm-password"
-                            className="form-control"
+                            className="input100"
                             type="password"
                             name="confirmPassword"
+                            placeholder="Confirm Password"
                             value={formValue.confirmPassword}
                             onChange={handleChange}
                         />
                         {formError.confirmPassword && (
                             <div className="error-feedback">{formError.confirmPassword}</div>
                         )}
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i class="uil uil-lock-alt"></i>
+                        </span>
                     </div>
-                    <button type="submit" className="submit-btn">
-                        Register
-                    </button>
+
+                    <div className="container-login100-form-btn">
+                        <button type="submit" className="login100-form-btn">Sign Up</button>
+                    </div>
+
+                    <div className="text-center p-t-136" style={{ textAlign: "center", paddingTop: "20px" }}>
+                        <a className="txt2" href="#">
+                            Create your Account
+                            <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>
