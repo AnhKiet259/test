@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/892.72b0c97c.chunk.css","mappings":"AAAA,mBACE,iBACF,CAEA,oBAEE,kBAAmB,CADnB,qBAEF","sources":["Components/ThreeScene.css"],"sourcesContent":[".container-wrapper {\r\n  text-align: center;\r\n}\r\n\r\n.three-js-container {\r\n  border: 2px solid black;\r\n  align-items: center;\r\n}"],"names":[],"sourceRoot":""}
