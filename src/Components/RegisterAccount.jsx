@@ -70,8 +70,6 @@ export default function RegisterPage() {
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        console.error('Lỗi khi gửi dữ liệu:');
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString();
         if (validateForm()) {
@@ -85,7 +83,7 @@ export default function RegisterPage() {
                     confirmPassword: formValue.confirmPassword,
                     date: formattedDate,
                 };
-
+                console.log('Đã gửi dữ liệu thành công:XXX', userData);
                 // Gửi dữ liệu người dùng mới này
                 const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
                 console.log('Đã gửi dữ liệu thành công:', response.data);

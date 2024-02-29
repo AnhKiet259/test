@@ -65,12 +65,12 @@
 //                 Taytrai.rotation.x = 1.4;
 //                 Tayphai.rotation.x = 1.4;
 
-//                 // Chân 
+//                 // Chân
 //                 Chantrai = Bones.find((bone) => bone.name === 'mixamorigLeftUpLeg');
 //                 Chanphai = Bones.find((bone) => bone.name === 'mixamorigRightUpLeg');
 //                 Bapchantrai = Bones.find((bone) => bone.name === 'mixamorigLeftLeg');
 //                 Bapchanphai = Bones.find((bone) => bone.name === 'mixamorigRightLeg');
-//                 // Đầu 
+//                 // Đầu
 //                 Dau = Bones.find((bone) => bone.name === 'mixamorigHead');
 //                 Co1 = Bones.find((bone) => bone.name === 'mixamorigNeck');
 
@@ -80,94 +80,94 @@
 
 
 
-                //     async function fetchData() {
-                //         fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/data-byptt/endpoint/GET_MOTION_API')
-                //             .then(response => {
-                //                 if (!response.ok) {
-                //                     throw new Error('Network response was not ok');
-                //                 }
-                //                 return response.json();
-                //             })
-                //             .then(data => {
-                //                 //const apiDataDiv = document.getElementById('apiData');
+//                 //     async function fetchData() {
+//                 //         fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/data-byptt/endpoint/GET_MOTION_API')
+//                 //             .then(response => {
+//                 //                 if (!response.ok) {
+//                 //                     throw new Error('Network response was not ok');
+//                 //                 }
+//                 //                 return response.json();
+//                 //             })
+//                 //             .then(data => {
+//                 //                 //const apiDataDiv = document.getElementById('apiData');
 
 
-                //                 const taytrai = data[0]?.public?.output?.jsonData?.taytrai_p;
-                //                 const cangtaytrai = data[0]?.public?.output?.jsonData?.cangtaytrai_p;
-                //                 const tayphai = data[0]?.public?.output?.jsonData?.tayphai_p;
-                //                 const cangtayphai = data[0]?.public?.output?.jsonData?.cangtayphai_p;
-                //                 Taytrai.rotation.z = taytrai;
-                //                 Tayphai.rotation.z = tayphai;
-                //                 Cotaytrai.rotation.z = cangtaytrai;
-                //                 Cotayphai.rotation.z = cangtayphai;
-                //             })
-                //             .catch(error => {
-                //                 console.error('There was a problem with the fetch operation:', error);
-                //             });
-                //     }
+//                 //                 const taytrai = data[0]?.public?.output?.jsonData?.taytrai_p;
+//                 //                 const cangtaytrai = data[0]?.public?.output?.jsonData?.cangtaytrai_p;
+//                 //                 const tayphai = data[0]?.public?.output?.jsonData?.tayphai_p;
+//                 //                 const cangtayphai = data[0]?.public?.output?.jsonData?.cangtayphai_p;
+//                 //                 Taytrai.rotation.z = taytrai;
+//                 //                 Tayphai.rotation.z = tayphai;
+//                 //                 Cotaytrai.rotation.z = cangtaytrai;
+//                 //                 Cotayphai.rotation.z = cangtayphai;
+//                 //             })
+//                 //             .catch(error => {
+//                 //                 console.error('There was a problem with the fetch operation:', error);
+//                 //             });
+//                 //     }
 
-                //     fetchData();
-                //     setInterval(fetchData, 100);
-
-
-                //     // Chân 
-                //     async function fetchData_chân() {
-                //         fetch('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/TEST_GET')
-                //             .then(response => {
-                //                 if (!response.ok) {
-                //                     throw new Error('Network response was not ok');
-                //                 }
-                //                 return response.json();
-                //             })
-                //             .then(data => {
-                //                 //const apiDataDiv = document.getElementById('apiData');
+//                 //     fetchData();
+//                 //     setInterval(fetchData, 100);
 
 
-                //                 const DUITRAI = data[0].public.output.jsonData.Roll_dui_trai_moi;
-                //                 const BAPCHANTRAI = data[0]?.public?.output?.jsonData?.Roll_bap_chan_trai_moi;
-                //                 const DUIPHAI = data[0]?.public?.output?.jsonData?.Roll_dui_phai_moi;
-                //                 const BAPCHANPHAI = data[0]?.public?.output?.jsonData?.Roll_bap_chan_phai_moi;
-                //                 Chantrai.rotation.x = DUITRAI;
-                //                 Chanphai.rotation.x = DUIPHAI;
-                //                 Bapchantrai.rotation.x = BAPCHANTRAI;
-                //                 Bapchanphai.rotation.x = BAPCHANPHAI;
+//                 //     // Chân
+//                 //     async function fetchData_chân() {
+//                 //         fetch('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/TEST_GET')
+//                 //             .then(response => {
+//                 //                 if (!response.ok) {
+//                 //                     throw new Error('Network response was not ok');
+//                 //                 }
+//                 //                 return response.json();
+//                 //             })
+//                 //             .then(data => {
+//                 //                 //const apiDataDiv = document.getElementById('apiData');
 
 
-                //             })
-                //             .catch(error => {
-                //                 console.error('There was a problem with the fetch operation:', error);
-                //             });
-                //     }
-
-                //     fetchData_chân();
-                //     setInterval(fetchData_chân, 100);
-
-                //     // Đầu 
-                //     async function fetchData_Đầu() {
-
-                //         fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-khcpn/endpoint/Get_motion').then(response => {
-                //             if (!response.ok) {
-                //                 throw new Error('Cannot Connect');
-                //             }
-                //             return response.json();
-                //         })
-                //             .then(data => {
-
-                //                 const Daux = data[0]?.public?.input?.jsonData?.Roll;
-                //                 const Dauz = data[0]?.public?.input?.jsonData?.Pitch;
-                //                 const Co = data[0]?.public?.input?.jsonData?.Yaw;
-                //                 Dau.rotation.z = Dauz;
-                //                 Dau.rotation.x = Daux;
-                //                 Co1.rotation.y = Co;
-                //             })
-                //             .catch(error => {
-                //                 console.error('There was a problem with the fetch operation:', error);
-                //             });
-                //     } fetchData_Đầu();
-                //     setInterval(fetchData_Đầu, 100);
+//                 //                 const DUITRAI = data[0].public.output.jsonData.Roll_dui_trai_moi;
+//                 //                 const BAPCHANTRAI = data[0]?.public?.output?.jsonData?.Roll_bap_chan_trai_moi;
+//                 //                 const DUIPHAI = data[0]?.public?.output?.jsonData?.Roll_dui_phai_moi;
+//                 //                 const BAPCHANPHAI = data[0]?.public?.output?.jsonData?.Roll_bap_chan_phai_moi;
+//                 //                 Chantrai.rotation.x = DUITRAI;
+//                 //                 Chanphai.rotation.x = DUIPHAI;
+//                 //                 Bapchantrai.rotation.x = BAPCHANTRAI;
+//                 //                 Bapchanphai.rotation.x = BAPCHANPHAI;
 
 
-                // });
+//                 //             })
+//                 //             .catch(error => {
+//                 //                 console.error('There was a problem with the fetch operation:', error);
+//                 //             });
+//                 //     }
+
+//                 //     fetchData_chân();
+//                 //     setInterval(fetchData_chân, 100);
+
+//                 //     // Đầu
+//                 //     async function fetchData_Đầu() {
+
+//                 //         fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-khcpn/endpoint/Get_motion').then(response => {
+//                 //             if (!response.ok) {
+//                 //                 throw new Error('Cannot Connect');
+//                 //             }
+//                 //             return response.json();
+//                 //         })
+//                 //             .then(data => {
+
+//                 //                 const Daux = data[0]?.public?.input?.jsonData?.Roll;
+//                 //                 const Dauz = data[0]?.public?.input?.jsonData?.Pitch;
+//                 //                 const Co = data[0]?.public?.input?.jsonData?.Yaw;
+//                 //                 Dau.rotation.z = Dauz;
+//                 //                 Dau.rotation.x = Daux;
+//                 //                 Co1.rotation.y = Co;
+//                 //             })
+//                 //             .catch(error => {
+//                 //                 console.error('There was a problem with the fetch operation:', error);
+//                 //             });
+//                 //     } fetchData_Đầu();
+//                 //     setInterval(fetchData_Đầu, 100);
+
+
+//                 // });
 
 //                 renderer = new THREE.WebGLRenderer({ antialias: true });
 //                 renderer.setPixelRatio(window.devicePixelRatio);
