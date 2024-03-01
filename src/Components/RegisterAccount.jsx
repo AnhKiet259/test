@@ -68,12 +68,17 @@ export default function RegisterPage() {
             date: new Date().toISOString()
         });
     };
+    const generateRandomNumber = () => {
+        return Math.floor(Math.random() * 1000000); // Số ngẫu nhiên từ 0 đến 999999
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString();
         if (validateForm()) {
             try {
+                const randomNumber = generateRandomNumber();
                 // Tạo một object mới chứa dữ liệu người dùng từ formValue
                 const userData = {
                     firstName: formValue.firstName,
@@ -82,12 +87,13 @@ export default function RegisterPage() {
                     password: formValue.password,
                     confirmPassword: formValue.confirmPassword,
                     date: formattedDate,
+                    ID: randomNumber,
                 };
-                console.log('Đã gửi dữ liệu thành công:XXX', userData);
                 // Gửi dữ liệu người dùng mới này
                 const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
                 console.log('Đã gửi dữ liệu thành công:', response.data);
                 // Thực hiện các xử lý tiếp theo, ví dụ: chuyển hướng, hiển thị thông báo thành công, vv.
+
             } catch (error) {
                 console.error('Lỗi khi gửi dữ liệu:', error);
                 // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
