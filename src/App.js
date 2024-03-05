@@ -75,8 +75,16 @@ const App = () => {
       case 'threeScene':
         return (
           <div>
+            <div className='title'>
+              <i className='uil uil-tachometer-fast-alt'></i>
+              <span className='text'>Gauge</span>
+            </div>
             <div className='bg3'>
               <GaugeExample />
+            </div>
+            <div className='title'>
+              <i className='uil uil-tachometer-fast-alt'></i>
+              <span className='text'>ThreeScene</span>
             </div>
             <div>
               <ThreeScene />

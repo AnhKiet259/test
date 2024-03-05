@@ -12,6 +12,7 @@ function ListAccount() {
     const [modalVisible, setModalVisible] = useState(false);
     const [confirmModalVisible, setConfirmModalVisible] = useState(false);
     const [confirmModalKey, setConfirmModalKey] = useState(null);
+    const [updatedID, setUpdatedID] = useState('');
     const [updatedFirstName, setUpdatedFirstName] = useState('');
     const [updatedLastName, setUpdatedLastName] = useState('');
     const [updatedEmail, setUpdatedEmail] = useState('');
@@ -92,7 +93,8 @@ function ListAccount() {
     };
 
     const handleUpdate = (key) => {
-        const { firstName, lastName, email, password } = data[key];
+        const { ID, firstName, lastName, email, password } = data[key];
+        setUpdatedID(ID);
         setUpdatedFirstName(firstName);
         setUpdatedLastName(lastName);
         setUpdatedEmail(email);
@@ -102,7 +104,7 @@ function ListAccount() {
     const handleUpdateConfirm = () => {
         const key = confirmModalKey;
         const updatedData = {
-            firstName: updatedFirstName,
+            ID: updatedID,
             email: updatedEmail,
             password: updatedPass,
         };

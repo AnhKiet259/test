@@ -22,9 +22,9 @@ const ThreeScene = () => {
             camera.lookAt(0, 0, 0);
 
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xffffff);
+            scene.background = new THREE.Color(0x3A3B3C);
 
-            const light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
+            const light = new THREE.HemisphereLight(0xffffff, 0x444422);
             light.position.set(0, 1, 0);
             scene.add(light);
 
@@ -142,8 +142,9 @@ const ThreeScene = () => {
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.outputEncoding = THREE.sRGBEncoding;
-            document.body.appendChild(renderer.domElement);
-
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            sceneRef.current.appendChild(renderer.domElement);
             const onWindowResize = () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
@@ -178,11 +179,13 @@ const ThreeScene = () => {
         // Cleanup
         return () => {
             //window.removeEventListener('resize', onWindowResize);
-            document.body.removeChild(renderer.domElement);
+            if (renderer && renderer.domElement) {
+                renderer.domElement.remove();
+            }
         };
     }, []); // Chỉ chạy một lần khi component được mount
 
-    return <div ref={sceneRef} />;
+    return <div className="three-scene-wrapper" ref={sceneRef}></div>;
 };
 
 export default ThreeScene;

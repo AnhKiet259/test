@@ -41,7 +41,7 @@ function Dashboard() {
                     <div className='box box2'>
                         <i class="uil uil-servers"></i>
                         <span className='text'>Total Sensor</span>
-                        <span className='number'>2</span>
+                        <span className='number'>4</span>
                     </div>
                     <div className='box box3'>
                         <i class="uil uil-cloud-check"></i>

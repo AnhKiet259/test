@@ -68,18 +68,40 @@ export default function RegisterPage() {
             date: new Date().toISOString()
         });
     };
-    const generateRandomNumber = () => {
-        return Math.floor(Math.random() * 1000000); // Số ngẫu nhiên từ 0 đến 999999
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/GET_ID_ACC');
+            const responseData = await response.json();
+            if (responseData[0] && responseData[0].ID_account !== null) {
+                return parseFloat(responseData[0].ID_account); // Convert the value to a double using parseFloat
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    };
+
+    const generateRandomNumber = async () => {
+        const data = await fetchData();
+        if (typeof data === 'undefined') {
+            return 1;
+        } else {
+            return data + 1;
+        }
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString();
+        const randomNumberr = await generateRandomNumber();
+
         if (validateForm()) {
             try {
-                const randomNumber = generateRandomNumber();
-                // Tạo một object mới chứa dữ liệu người dùng từ formValue
+                const randomNumber = {
+                    ID_account: randomNumberr,
+                };
+
                 const userData = {
                     firstName: formValue.firstName,
                     lastName: formValue.lastName,
@@ -87,21 +109,32 @@ export default function RegisterPage() {
                     password: formValue.password,
                     confirmPassword: formValue.confirmPassword,
                     date: formattedDate,
-                    ID: randomNumber,
+                    ID: randomNumberr,
                 };
-                // Gửi dữ liệu người dùng mới này
-                const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
-                console.log('Đã gửi dữ liệu thành công:', response.data);
-                // Thực hiện các xử lý tiếp theo, ví dụ: chuyển hướng, hiển thị thông báo thành công, vv.
 
+                console.error('Random number:', randomNumberr);
+                const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
+                const response1 = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/COUNT_ID', randomNumber);
+
+                console.log('Đã gửi dữ liệu thành công:', response.data);
+                console.log('Đã gửi dữ liệu thành công:', response1.data);
+                // Xóa thông tin trong form sau khi gửi thành công
+                setFormValue({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                });
+
+                // Thực hiện các xử lý tiếp theo, ví dụ: chuyển hướng, hiển thị thông báo thành công, vv.
             } catch (error) {
                 console.error('Lỗi khi gửi dữ liệu:', error);
-                // Xử lý lỗi và hiển thị thông báo lỗi cho người dùng
+                // Xử lý lỗi và hiển thị thông báo lỗi
             }
-        } else {
-            console.log("form invalid");
         }
     };
+
 
     console.log(formError);
 

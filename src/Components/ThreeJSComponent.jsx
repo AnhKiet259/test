@@ -11,14 +11,14 @@ const SmallFrame = () => {
         let camera, scene, renderer, Taytrai, Tayphai, Cotaytrai, Cotayphai, Chantrai, Chanphai, Bapchantrai, Bapchanphai, Dau, Co1;
 
         const init = () => {
-            camera = new THREE.PerspectiveCamera(40, (window.innerWidth / 2) / (window.innerHeight / 2), 0.01, 10);
+            camera = new THREE.PerspectiveCamera(40, (window.innerWidth) / (window.innerHeight), 0.01, 10);
             camera.position.set(3, 3, 1);
             camera.lookAt(0, 0, 0);
 
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xffffff);
+            scene.background = new THREE.Color(0x3A3B3C);
 
-            const light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
+            const light = new THREE.HemisphereLight(0xffffff, 0x444422);
             light.position.set(0, 1, 0);
             scene.add(light);
 
@@ -172,7 +172,7 @@ const SmallFrame = () => {
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setPixelRatio(window.devicePixelRatio);
             // Thu nhỏ kích thước của renderer lại 1/2
-            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.outputEncoding = THREE.sRGBEncoding;
 
             mount.current.appendChild(renderer.domElement);
@@ -190,10 +190,10 @@ const SmallFrame = () => {
         };
 
         const onWindowResize = () => {
-            camera.aspect = (window.innerWidth / 2) / (window.innerHeight / 2);
+            camera.aspect = (window.innerWidth) / (window.innerHeight);
             camera.updateProjectionMatrix();
             // Thu nhỏ kích thước của renderer lại 1/2
-            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            renderer.setSize(window.innerWidth, window.innerHeight);
         };
 
         init();
@@ -207,8 +207,14 @@ const SmallFrame = () => {
     }, []);
 
     return (
-        <div className="three-js-container" ref={mount}>
-            {null}
+        <div>
+            <div className='title'>
+                <i className='uil uil-tachometer-fast-alt'></i>
+                <span className='text'>Three JS</span>
+            </div>
+            <div className="three-scene-wrapper" ref={mount}>
+                {null}
+            </div>
         </div>
     );
 };
