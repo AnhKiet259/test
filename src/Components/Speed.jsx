@@ -26,7 +26,7 @@ export default function SpeedInputPage() {
             error["Speed"] = "Speed is required";
         } else {
             if (formValue.Speed < lowerLimit || formValue.Speed > upperLimit) {
-                error["Speed"] = "Vui lòng nhập giá trị từ 0 đến 1000";
+                error["Speed"] = "Vui lòng nhập giá trị từ 500 đến 5000";
             }
         }
 
