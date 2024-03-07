@@ -19,8 +19,8 @@ export default function SpeedInputPage() {
 
     const validateForm = () => {
         const error = {};
-        const lowerLimit = 0;
-        const upperLimit = 1000;
+        const lowerLimit = 500;
+        const upperLimit = 5000;
 
         if (isEmptyValue(formValue.Speed)) {
             error["Speed"] = "Speed is required";
