@@ -37,7 +37,7 @@ const App = () => {
   const session_password = Cookies.get('session_password');
 
   useEffect(() => {
-    const isLoggedInCookie = document.cookie.split(';').some((cookie) => cookie.trim().startsWith('isLoggedIn='));
+    const isLoggedInCookie = document.cookiep.split(';').some((cookie) => cookie.trim().startsWith('isLoggedIn='));
     if (isLoggedInCookie) {
       setIsLoggedIn(true);
     }
