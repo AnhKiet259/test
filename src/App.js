@@ -24,7 +24,7 @@ const App = () => {
 
   const handleLogout = () => {
     document.cookie = 'isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    setIsLoggedIn(false);
+    setIsLoggedIn(false); window.location.reload(true);
   };
 
   const session_username = Cookies.get('session_username');
@@ -37,6 +37,7 @@ const App = () => {
   const session_password = Cookies.get('session_password');
 
   useEffect(() => {
+    handleLogout();
     const isLoggedInCookie = document.cookie.split(';').some((cookie) => cookie.trim().startsWith('isLoggedIn='));
     if (isLoggedInCookie) {
       setIsLoggedIn(true);
@@ -87,60 +88,60 @@ const App = () => {
 
   const renderUI = () => {
 
-    // if (!isLoggedIn) {
-    switch (currentPage1) {
-      case 'LoginPage':
-        return <LoginPage setIsLoggedIn={setIsLoggedIn} />;
-      case 'register':
-        return <RegisterPage />;
-      default:
-        return null;
+    if (!isLoggedIn) {
+      switch (currentPage1) {
+        case 'LoginPage':
+          return <LoginPage setIsLoggedIn={setIsLoggedIn} />;
+        case 'register':
+          return <RegisterPage />;
+        default:
+          return null;
+      }
+    } else {
+      switch (currentPage) {
+        case 'Dashboard':
+          return <Dashboard />;
+        case 'speedtest':
+          return <SpeedInputPage />;
+        case 'UpdateAccount':
+          return <UpdateAccount
+            session_username={session_username}
+            session_firstname={session_firstname}
+            session_lastname={session_lastname}
+            session_birthdate={session_birthdate}
+            session_date={session_date}
+            session_phone={session_phone}
+            session_email={session_email}
+            session_password={session_password} />;
+        case 'ChartMongo':
+          return <ChartMongo />;
+        case 'ListAccount':
+          return <ListAccount />;
+        case 'ThreeJS':
+          return <SmallFrame />;
+        case 'threeScene':
+          return (
+            <div>
+              <div className='title'>
+                <i className='uil uil-tachometer-fast-alt'></i>
+                <span className='text'>Gauge</span>
+              </div>
+              <div className='bg3'>
+                <GaugeExample />
+              </div>
+              <div className='title'>
+                <i className='uil uil-tachometer-fast-alt'></i>
+                <span className='text'>ThreeScene</span>
+              </div>
+              <div>
+                <ThreeScene />
+              </div>
+            </div>
+          );
+        default:
+          return null;
+      }
     }
-    // } else {
-    //   switch (currentPage) {
-    //     case 'Dashboard':
-    //       return <Dashboard />;
-    //     case 'speedtest':
-    //       return <SpeedInputPage />;
-    //     case 'UpdateAccount':
-    //       return <UpdateAccount
-    //         session_username={session_username}
-    //         session_firstname={session_firstname}
-    //         session_lastname={session_lastname}
-    //         session_birthdate={session_birthdate}
-    //         session_date={session_date}
-    //         session_phone={session_phone}
-    //         session_email={session_email}
-    //         session_password={session_password} />;
-    //     case 'ChartMongo':
-    //       return <ChartMongo />;
-    //     case 'ListAccount':
-    //       return <ListAccount />;
-    //     case 'ThreeJS':
-    //       return <SmallFrame />;
-    //     case 'threeScene':
-    //       return (
-    //         <div>
-    //           <div className='title'>
-    //             <i className='uil uil-tachometer-fast-alt'></i>
-    //             <span className='text'>Gauge</span>
-    //           </div>
-    //           <div className='bg3'>
-    //             <GaugeExample />
-    //           </div>
-    //           <div className='title'>
-    //             <i className='uil uil-tachometer-fast-alt'></i>
-    //             <span className='text'>ThreeScene</span>
-    //           </div>
-    //           <div>
-    //             <ThreeScene />
-    //           </div>
-    //         </div>
-    //       );
-    //     default:
-    //       return null;
-    //   }
-    // }
   };
 
   return (
