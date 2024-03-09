@@ -81,7 +81,7 @@ function ListAccount() {
         const value = event.target.value;
         setSearchTerm(value);
         // Lọc dữ liệu dựa trên firstName
-        const filtered = Object.keys(data).filter(key => data[key].firstName.toLowerCase().includes(value.toLowerCase()));
+        const filtered = Object.keys(data).filter(key => data[key].firstname.toLowerCase().includes(value.toLowerCase()));
         setFilteredData(filtered.reduce((obj, key) => {
             obj[key] = data[key];
             return obj;
@@ -93,10 +93,10 @@ function ListAccount() {
     };
 
     const handleUpdate = (key) => {
-        const { ID, firstName, lastName, email, password } = data[key];
-        setUpdatedID(ID);
-        setUpdatedFirstName(firstName);
-        setUpdatedLastName(lastName);
+        const { firstname, lastname, email, password } = data[key];
+        setUpdatedID(key);
+        setUpdatedFirstName(firstname);
+        setUpdatedLastName(lastname);
         setUpdatedEmail(email);
         setUpdatedPass(password);
         toggleModal();
@@ -104,7 +104,7 @@ function ListAccount() {
     const handleUpdateConfirm = () => {
         const key = confirmModalKey;
         const updatedData = {
-            ID: updatedID,
+            username: updatedID,
             email: updatedEmail,
             password: updatedPass,
         };
@@ -153,12 +153,6 @@ function ListAccount() {
                 <div className='search-box1' style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                     <i className='uil uil-search'></i>
                     <input type="text" value={searchTerm} onChange={handleSearch} placeholder="Search User By FirstName" />
-                </div>
-
-                <div className="toggle-password" style={{ marginLeft: '10px' }}>
-                    <button type="button" className={showPassword ? "active button4" : "button3"} onClick={toggleShowPassword}>
-                        {showPassword ? <><i class="uil uil-eye-slash"></i> Hide Password</> : <><i className="uil uil-eye"></i> Show Password</>}
-                    </button>
                 </div>
             </div>
 
@@ -252,11 +246,11 @@ function ListAccount() {
                         <div className='logous'>
                             <img src={usavtar} alt='Logo' />
                         </div>
-                        <h2>{filteredData[key].firstName} {filteredData[key].lastName}</h2>
-                        <p>First Name: {filteredData[key].firstName}</p>
-                        <p>Last Name: {filteredData[key].lastName}</p>
+                        <h2>{filteredData[key].firstname} {filteredData[key].lastname}</h2>
+                        <p>First Name: {filteredData[key].firstname}</p>
+                        <p>Last Name: {filteredData[key].lastname}</p>
                         <p>Email: {filteredData[key].email}</p>
-                        <p>Password: {showPassword ? filteredData[key].password : "*********"}</p>
+                        <p>Email: {filteredData[key].phone}</p>
                         <div>
                             <button className='button1' onClick={() => handleUpdate(key)}>Update</button>
                             <button className='button2' onClick={() => handleDelete(key)}>Delete</button>

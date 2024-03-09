@@ -16,11 +16,12 @@ const ListAccount = lazy(() => import('./Components/ListAccount'));
 const ListAccountUS = lazy(() => import('./Components/ListAccountUS'));
 const LoginPage = lazy(() => import('./Components/Login'));
 const UpdateAccount = lazy(() => import('./Components/UpdateAccount'));
+const CreateAccAdmin = lazy(() => import('./Components/CreateAccAdmin'));
 
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('Dashboard');
-  const [currentPage1, setCurrentPage1] = useState('Login');
+  const [currentPage1, setCurrentPage1] = useState('LoginPage');
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Thêm state isLoggedIn
 
   const handleLogout = () => {
@@ -36,8 +37,12 @@ const App = () => {
   const session_phone = Cookies.get('session_phone');
   const session_email = Cookies.get('session_email');
   const session_password = Cookies.get('session_password');
+  const session_role = Cookies.get('session_role');
 
   useEffect(() => {
+
+    // setInterval(handleLogout, 1 * 60 * 1000);
+
     const isLoggedInCookie = document.cookie.split(';').some((cookie) => cookie.trim().startsWith('isLoggedIn='));
     if (isLoggedInCookie) {
       setIsLoggedIn(true);
@@ -103,6 +108,8 @@ const App = () => {
           return <Dashboard />;
         case 'speedtest':
           return <SpeedInputPage />;
+        case 'CreateAccAdmin':
+          return <CreateAccAdmin />;
         case 'ListAccountUS':
           return <ListAccountUS />;
         case 'UpdateAccount':
@@ -186,56 +193,83 @@ const App = () => {
                 </a>
               </li>
             </ul>
-          ) : (<ul className='nav-links'>
-            <li>
-              <a onClick={() => setCurrentPage('Dashboard')}>
-                <i class="uil uil-estate"></i>
-                <span className="link-name">Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a onClick={() => setCurrentPage('UpdateAccount')}>
-                <i class="uil uil-estate"></i>
-                <span className="link-name">Profile</span>
-              </a>
-            </li>
-            <li>
-              <a onClick={() => setCurrentPage('ListAccountUS')}>
-                <i class="uil uil-estate"></i>
-                <span className="link-name">Search Users</span>
-              </a>
-            </li>
-            {/* <li>
-              <a onClick={() => setCurrentPage('ListAccount')}>
-                <i class="uil uil-users-alt"></i>
-                <span className="link-name">Users</span>
-              </a>
-            </li> */}
-            <li>
-              <a onClick={() => setCurrentPage('threeScene')}>
-                <i class="uil uil-cube"></i>
-                <span className="link-name">Three Scene</span>
-              </a>
-            </li>
-            <li>
-              <a onClick={() => setCurrentPage('speedtest')}>
-                <i class="uil uil-tachometer-fast-alt"></i>
-                <span className="link-name">Speed Test</span>
-              </a>
-            </li>
-            <li>
-              <a onClick={() => setCurrentPage('ThreeJS')}>
-                <i class="uil uil-box"></i>
-                <span className="link-name">Three JS</span>
-              </a>
-            </li>
-            <li>
-              <a onClick={() => setCurrentPage('ChartMongo')}>
-                <i class="uil uil-chart-line"></i>
-                <span className="link-name">ChartMongo</span>
-              </a>
-            </li>
-          </ul>)}
+          ) : (
+            <div>
+              {(session_role === '0') ? (
+                <ul className='nav-links'>
+                  <li>
+                    <a onClick={() => setCurrentPage('Dashboard')}>
+                      <i class="uil uil-estate"></i>
+                      <span className="link-name">Dashboard</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('UpdateAccount')}>
+                      <i class="uil uil-user-circle"></i>
+                      <span className="link-name">Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('ListAccountUS')}>
+                      <i class="uil uil-search-alt"></i>
+                      <span className="link-name">Search Users</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('threeScene')}>
+                      <i class="uil uil-cube"></i>
+                      <span className="link-name">Three Scene</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('speedtest')}>
+                      <i class="uil uil-tachometer-fast-alt"></i>
+                      <span className="link-name">Speed Test</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('ThreeJS')}>
+                      <i class="uil uil-box"></i>
+                      <span className="link-name">Three JS</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('ChartMongo')}>
+                      <i class="uil uil-chart-line"></i>
+                      <span className="link-name">ChartMongo</span>
+                    </a>
+                  </li>
+                </ul>
+              ) : (
+                <div>
+                  <li>
+                    <a onClick={() => setCurrentPage('Dashboard')}>
+                      <i class="uil uil-estate"></i>
+                      <span className="link-name">Dashboard</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('UpdateAccount')}>
+                      <i class="uil uil-user-circle"></i>
+                      <span className="link-name">Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('CreateAccAdmin')}>
+                      <i class="uil uil-user-plus"></i>
+                      <span className="link-name">Create Account</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => setCurrentPage('ListAccount')}>
+                      <i class="uil uil-users-alt"></i>
+                      <span className="link-name">Manage Users</span>
+                    </a>
+                  </li>
+                </div>
+              )}
+            </div>
+          )}
 
 
           <ul className='logout-mode'>

@@ -20,8 +20,6 @@ const LoginPage = ({ setIsLoggedIn }) => {
             username: username,
             password: password,
         };
-
-        console.log('Thông tin đăng nhập:', loginData);
         axios
             .post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/LOGINADM', loginData)
             .then(response => {
@@ -41,6 +39,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                     Cookies.set('session_date', response.data.date);
                     Cookies.set('session_phone', response.data.phone);
                     Cookies.set('session_password', response.data.password);
+                    Cookies.set('session_role', response.data.role);
                 } else {
                     // Đăng nhập không thành công, xử lý thông báo lỗi hoặc thực hiện các hành động khác
                     console.log('Đăng nhập không thành công');

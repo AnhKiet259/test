@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import "./RegisterAccount.css";
-import logore from './picgo.png';
+import "./CreateAccAdmin.css";
+import logore from './usav.png';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -12,26 +12,18 @@ const isEmptyValue = (value) => {
     return !value || value.trim().length < 1;
 };
 
-const isEmailValid = (email) => {
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-};
-
-export default function RegisterPage({ }) {
+export default function CreateAccAdmin({ }) {
 
     const [formValue, setFormValue] = useState({});
     const [formError, setFormError] = useState({});
     const [modalVisible1, setModalVisible1] = useState(false);
     const [modalVisible2, setModalVisible2] = useState(false);
-    const [modalVisible23, setModalVisible23] = useState(false);
 
     const toggleModal1 = () => {
         setModalVisible1(!modalVisible1); // Toggle the modal visibility state
     };
     const toggleModal2 = () => {
         setModalVisible2(!modalVisible2); // Toggle the modal visibility state
-    };
-    const toggleModal23 = () => {
-        setModalVisible23(!modalVisible23); // Toggle the modal visibility state
     };
 
     const validateForm = () => {
@@ -78,23 +70,19 @@ export default function RegisterPage({ }) {
                 };
                 const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
 
-                if (response.data.body === true) {
-                    console.log('Đã gửi dữ liệu thành công:', response.data);
-                    // Xóa thông tin trong form sau khi gửi thành công
-                    setFormValue({
-                        username: '',
-                        firstname: '',
-                        lastname: '',
-                        birthdate: '',
-                        email: '',
-                        phone: '',
-                        password: '',
-                    });
-                    toggleModal2();
-                    // Thực hiện các xử lý tiếp theo, ví dụ: chuyển hướng, hiển thị thông báo thành công, vv.
-                } else {
-                    toggleModal23();
-                }
+                console.log('Đã gửi dữ liệu thành công:', response.data);
+                // Xóa thông tin trong form sau khi gửi thành công
+                setFormValue({
+                    username: '',
+                    firstname: '',
+                    lastname: '',
+                    birthdate: '',
+                    email: '',
+                    phone: '',
+                    password: '',
+                });
+                toggleModal2();
+                // Thực hiện các xử lý tiếp theo, ví dụ: chuyển hướng, hiển thị thông báo thành công, vv.
             } catch (error) {
                 console.error('Lỗi khi gửi dữ liệu:', error);
                 // Xử lý lỗi và hiển thị thông báo lỗi
@@ -108,12 +96,12 @@ export default function RegisterPage({ }) {
     return (
         <div class="container43 login-formz">
             <div class="left-column login1001-pic">
-                <img src={logore} alt='Logo' />
+                <img src={logore} style={{ width: '80%' }} alt='Logo' />
             </div>
             <div class="right-column">
                 <div class="limiter " >
                     <form onSubmit={handleSubmit}>
-                        <h1 style={{ textAlign: 'center', marginBottom: '30px', color: '#A2A0A0' }}>Register</h1>
+                        <h1 style={{ textAlign: 'center', marginBottom: '30px', color: '#A2A0A0' }}>Create Admin</h1>
                         <div class="form-groupz">
                             <input className="textz" id="username" name="username"
                                 placeholder="Username" value={formValue.username} onChange={handleChange} />
@@ -177,7 +165,7 @@ export default function RegisterPage({ }) {
                                 <div className="modal-content">
                                     <i class="uil uil-annoyed modalicon" style={{ width: "200px" }}></i>
                                     <h2>Lưu Ý</h2>
-                                    <p>Vui lòng điền đầy đủ thông tin cá nhân</p>
+                                    <p>Vui lòng điền đầy đủ thông tin Admin</p>
                                     <button className="modal-close" onClick={toggleModal1}>
                                         Đóng
                                     </button>
@@ -189,43 +177,30 @@ export default function RegisterPage({ }) {
                                 <div className="modal-content">
                                     <i class="uil uil-check-circle modalicon" style={{ width: "200px", color: 'green' }}></i>
                                     <h2>Thành Công</h2>
-                                    <p>Bạn đã đăng kí tài khoản thành công !</p>
+                                    <p>Bạn đã tạo tài khoản Admin thành công !</p>
                                     <button className="modal-close" onClick={toggleModal2}>
                                         Đóng
                                     </button>
                                 </div>
                             </div>
                         )}
-                        {modalVisible23 && (
-                            <div className="modal">
-                                <div className="modal-content">
-                                    <i class="uil uil-exclamation-circle modalicon" style={{ width: "200px", color: 'red' }}></i>
-                                    <h2>Thất Bại</h2>
-                                    <p>Tài khoản đã tồn tại trong hệ thống !</p>
-                                    <button className="modal-close" onClick={toggleModal23}>
-                                        Đóng
-                                    </button>
-                                </div>
-                            </div>
-                        )}
 
 
-                        <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <button style={{ width: '60%' }} className='buttonz' type="submit">Đăng Kí</button>
-                        </div>
-                        <div style={{ textAlign: "center", paddingTop: "10px" }}>
+                        <div style={{ textAlign: "center", paddingBottom: '10px' }}>
                             <a style={{
                                 color: 'white',
                                 fontSize: '10px',
-                                textDecoration: 'underline',
                                 transition: '0.3s',
                                 cursor: 'pointer',
                             }}
                                 onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
                                 onMouseLeave={(e) => e.target.style.color = 'white'}
                             >
-                                Already Have Account ?
+                                -- Role Account: Admin --
                             </a>
+                        </div>
+                        <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <button style={{ width: '60%' }} className='buttonz' type="submit">Create</button>
                         </div>
                     </form>
                 </div>
