@@ -6,6 +6,7 @@ function Dashboard() {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [totalAccounts, setTotalAccounts] = useState(0);
+    const [totalRoleOneAccounts, setTotalRoleOneAccounts] = useState(0);
 
     useEffect(() => {
         fetchData();
@@ -18,6 +19,9 @@ function Dashboard() {
                 setData(data[0].public.input.jsondata);
                 setFilteredData(data[0].public.input.jsondata); // Khởi tạo filteredData ban đầu là toàn bộ dữ liệu
                 setTotalAccounts(Object.keys(data[0].public.input.jsondata).length);
+                // Đếm số lượng tài khoản có role = 1
+                const roleOneAccounts = Object.values(data[0].public.input.jsondata).filter(account => account.role === 1);
+                setTotalRoleOneAccounts(roleOneAccounts.length);
             })
             .catch(error => {
                 console.error('Fetch error:', error);
@@ -44,9 +48,9 @@ function Dashboard() {
                         <span className='number'>4</span>
                     </div>
                     <div className='box box3'>
-                        <i class="uil uil-cloud-check"></i>
-                        <span className='text'>Online</span>
-                        <span className='number'>1</span>
+                        <i class="uil uil-user-check"></i>
+                        <span className='text'>Total Admins</span>
+                        <span className='number'>{totalRoleOneAccounts}</span>
                     </div>
                 </div>
 

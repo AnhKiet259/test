@@ -92,7 +92,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                         onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
                         onMouseLeave={(e) => e.target.style.color = 'white'}
                     >
-                        ------ Testing Account ------
+                        ---- Account Admin Test ----
                     </a> </div>
                 <div style={{ textAlign: "center", paddingTop: "5px" }}>
                     <a style={{
@@ -104,7 +104,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                         onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
                         onMouseLeave={(e) => e.target.style.color = 'white'}
                     >
-                        Username: sieucap
+                        Username: admin
                     </a> </div>
                 <div style={{ textAlign: "center", paddingTop: "5px", paddingBottom: '5px' }}>
                     <a style={{
@@ -116,7 +116,44 @@ const LoginPage = ({ setIsLoggedIn }) => {
                         onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
                         onMouseLeave={(e) => e.target.style.color = 'white'}
                     >
-                        Password: sieucap123
+                        Password: admin123
+                    </a>
+                </div>
+                <div style={{ textAlign: "center", paddingTop: "5px" }}>
+                    <a style={{
+                        color: 'white',
+                        fontSize: '10px',
+                        transition: '0.3s',
+                        cursor: 'pointer',
+                    }}
+                        onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
+                        onMouseLeave={(e) => e.target.style.color = 'white'}
+                    >
+                        ---- Account User Test ----
+                    </a> </div>
+                <div style={{ textAlign: "center", paddingTop: "5px" }}>
+                    <a style={{
+                        color: 'white',
+                        fontSize: '10px',
+                        transition: '0.3s',
+                        cursor: 'pointer',
+                    }}
+                        onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
+                        onMouseLeave={(e) => e.target.style.color = 'white'}
+                    >
+                        Username: userlogin
+                    </a> </div>
+                <div style={{ textAlign: "center", paddingTop: "5px", paddingBottom: '5px' }}>
+                    <a style={{
+                        color: 'white',
+                        fontSize: '10px',
+                        transition: '0.3s',
+                        cursor: 'pointer',
+                    }}
+                        onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
+                        onMouseLeave={(e) => e.target.style.color = 'white'}
+                    >
+                        Password: user123
                     </a>
                 </div>
             </div>

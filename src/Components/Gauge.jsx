@@ -103,7 +103,7 @@ const GaugeExample = () => {
                     <span className='text'>Roll Angle - Right Leg Knee</span>
                     <span className='number'>
                         <span className='rad-value'>{renderValueWithUnit(gaugeData.Roll_dui_trai_moi)} <sup style={{ fontSize: '20px' }}>rad</sup></span>
-                        <span className='divider' style={{ margin: '0 5px' }}>|</span>
+                        <span className='divider' style={{ margin: '0 5px' }}>/</span>
                         <span className='degree-value'>{renderValueWithUnit(gaugeData.Roll_dui_trai_moi * (180 / Math.PI))}<sup style={{ fontSize: '30px' }}>°</sup></span>
                     </span>
                 </div>
@@ -123,6 +123,7 @@ const GaugeExample = () => {
                     <span className='text'>Roll Angle - Right Leg Knee</span>
                     <span className='number'>
                         <span className='rad-value'>{renderValueWithUnit(gaugeData.Roll_dui_phai_moi)} <sup style={{ fontSize: '20px' }}>rad</sup></span>
+                        <span className='divider' style={{ margin: '0 5px' }}>/</span>
                         <span className='degree-value'>{renderValueWithUnit(gaugeData.Roll_dui_phai_moi * (180 / Math.PI))}<sup style={{ fontSize: '30px' }}>°</sup></span>
                     </span>
                 </div>
@@ -131,7 +132,7 @@ const GaugeExample = () => {
                     <span className='text'>Roll Angle - Right Leg Knee</span>
                     <span className='number'>
                         <span className='rad-value'>{renderValueWithUnit(gaugeData.Roll_bap_chan_phai_moi)} <sup style={{ fontSize: '20px' }}>rad</sup></span>
-                        <span className='divider' style={{ margin: '0 5px' }}>|</span>
+                        <span className='divider' style={{ margin: '0 5px' }}>/</span>
                         <span className='degree-value'>{renderValueWithUnit(gaugeData.Roll_bap_chan_phai_moi * (180 / Math.PI))}<sup style={{ fontSize: '30px' }}>°</sup></span>
                     </span>
                 </div>

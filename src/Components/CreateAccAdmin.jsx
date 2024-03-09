@@ -66,7 +66,7 @@ export default function CreateAccAdmin({ }) {
                     phone: formValue.phone,
                     password: formValue.password,
                     date: formattedDate,
-                    role: 0,
+                    role: 1,
                 };
                 const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/Log_in', userData);
 

@@ -42,7 +42,7 @@ const App = () => {
 
   useEffect(() => {
 
-    // setInterval(handleLogout, 1 * 60 * 1000);
+    setInterval(handleLogout, 60 * 60 * 1000);
 
     const isLoggedInCookie = document.cookie.split(';').some((cookie) => cookie.trim().startsWith('isLoggedIn='));
     if (isLoggedInCookie) {
