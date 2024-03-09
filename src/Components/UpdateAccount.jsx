@@ -30,7 +30,7 @@ export default function UpdateAccount({ session_username, session_firstname, ses
 
     const dangxuatload = () => {
         document.cookie = 'isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        window.location.href = '/';
+        window.location.reload(true);
     };
 
     const toggleModal11 = () => {
@@ -79,7 +79,7 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                     lastname: formValue.lastname,
                     birthdate: formValue.birthdate,
                     email: formValue.email,
-                    phone: formValue.phone
+                    phone: formValue.phone,
                 };
                 const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/EDIT_US_INFO', userData);
                 console.log('Đã gửi dữ liệu thành công:', response.data);
@@ -90,6 +90,47 @@ export default function UpdateAccount({ session_username, session_firstname, ses
             }
         }
     };
+
+    const validateForm2 = () => {
+        const error = {};
+
+        if (isEmptyValue(formValue.password)) {
+            toggleModal22();
+            toggleModal1111();
+        }
+        setFormError(error);
+        return Object.keys(error).length === 0;
+    };
+
+    const handleChange2 = (event) => {
+        const { value, name } = event.target;
+        setFormValue({
+            ...formValue,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit2 = async (event) => {
+        event.preventDefault();
+
+        if (validateForm2()) {
+            try {
+
+                const userData = {
+                    username: session_username,
+                    password: formValue.password,
+                };
+                console.log('Đã gửi dữ liệu thành công:XXXXXXX', userData);
+                const response = await axios.post('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/EDIT_US_INFO_Pass', userData);
+                console.log('Đã gửi dữ liệu thành công:', response.data);
+                toggleModal22();
+                toggleModal111();
+            } catch (error) {
+                console.error('Lỗi khi gửi dữ liệu:', error);
+            }
+        }
+    };
+
 
 
     console.log(formError);
@@ -111,14 +152,15 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                     </div>
                     <div class="form-groupz">
                         <div style={{ display: 'flex' }}>
-                            <div style={{ display: 'flex' }}>
-                                <p style={{ color: '#A2A0A0', fontWeight: 'bold' }}>First Name:</p>
-                                <p style={{ color: '#A2A0A0', marginLeft: '10px' }}>{session_firstname}</p>
-                            </div>
-                            <div style={{ display: 'flex', marginLeft: '20px' }}>
-                                <p style={{ color: '#A2A0A0', fontWeight: 'bold' }}>Last Name:</p>
-                                <p style={{ color: '#A2A0A0', marginLeft: '10px' }}>{session_lastname}</p>
-                            </div>
+                            <p style={{ color: '#A2A0A0', fontWeight: 'bold' }}>First Name:</p>
+                            <p style={{ color: '#A2A0A0', marginLeft: '10px' }}>{session_firstname}</p>
+                        </div>
+
+                    </div>
+                    <div class="form-groupz">
+                        <div style={{ display: 'flex' }}>
+                            <p style={{ color: '#A2A0A0', fontWeight: 'bold' }}>Last Name:</p>
+                            <p style={{ color: '#A2A0A0', marginLeft: '10px' }}>{session_lastname}</p>
                         </div>
                     </div>
                     <div class="form-groupz">
@@ -146,25 +188,26 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                         <button style={{ width: 'auto', marginLeft: '20px', borderRadius: '10px' }} onClick={toggleModal22} className='buttonz'>Change Password</button>
                     </div>
 
-                    {/* {modalVisible22 && (
+                    {modalVisible22 && (
                         <div className="modal">
                             <div className="modal-content" style={{
                                 backgroundColor: '#3A3B3C',
                                 border: '5px solid #4D4C4C'
                             }}>
-                                <form >
+                                <form onSubmit={handleSubmit2}>
                                     <h1 style={{ textAlign: 'center', marginTop: '30px', color: '#A2A0A0' }}>Change Password</h1>
                                     <div class="form-groupz">
                                         <p style={{ textAlign: 'center', color: '#A2A0A0', fontWeight: 'bold' }}>Your Password: {session_password}</p>
 
                                         <div style={{ display: 'flex' }}>
-                                            <input className="textz" id="phone" name="phone"
-                                                placeholder="New Password" style={{ marginLeft: '10px' }} value={formValue.phone} onChange={handleChange} />
+
+                                            <input className="textz" type="password" id="password" name="password"
+                                                placeholder="Password" value={formValue.password} onChange={handleChange2} />
                                         </div>
                                     </div>
 
                                     <div style={{ marginTop: '20px' }}>
-                                        <button className="modal-close" stype="submit" onClick={toggleModal22}>
+                                        <button className="modal-close" type="submit">
                                             Submit
                                         </button>
                                         <button className="modal-close" style={{ marginLeft: '10px' }} onClick={toggleModal22}>
@@ -174,7 +217,7 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                                 </form>
                             </div>
                         </div>
-                    )} */}
+                    )}
 
 
                     {modalVisible1111 && (
