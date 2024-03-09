@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import "./Login.css";
-import loginpic from './usav.png';
+import logore from './login.png';
 const LoginPage = ({ setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -60,10 +60,10 @@ const LoginPage = ({ setIsLoggedIn }) => {
                     <input className='textz' id="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />
                 </div>
                 <div class="form-groupz">
-                    <input className='textz' type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Mật khẩu" />
+                    <input className='textz' type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <button className='buttonz' style={{ width: '50%' }} type="submit">Đăng nhập</button>
+                    <button className='buttonz' style={{ width: '50%' }} type="submit">Submit</button>
                 </div>
                 <div style={{ textAlign: "center", paddingTop: "10px" }}>
                     <a style={{
@@ -92,7 +92,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                         onMouseEnter={(e) => e.target.style.color = '#43d2e8'}
                         onMouseLeave={(e) => e.target.style.color = 'white'}
                     >
-                        ------ Tài Khoản Thử Nghiệm ------
+                        ------ Testing Account ------
                     </a> </div>
                 <div style={{ textAlign: "center", paddingTop: "5px" }}>
                     <a style={{
@@ -125,10 +125,10 @@ const LoginPage = ({ setIsLoggedIn }) => {
                 <div className="modal">
                     <div className="modal-content">
                         <i class="uil uil-exclamation-circle modalicon" style={{ width: "200px", color: 'red' }}></i>
-                        <h2>Thất Bại</h2>
-                        <p>Tài Khoản hoặc mật khẩu không chính xác !</p>
+                        <h2>Alert</h2>
+                        <p style={{ color: '#4D4C4C' }}>Username or password is incorrect</p>
                         <button className="modal-close" onClick={toggleModallogin}>
-                            Đóng
+                            Close
                         </button>
                     </div>
                 </div>

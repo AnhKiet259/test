@@ -176,10 +176,10 @@ export default function RegisterPage({ }) {
                             <div className="modal">
                                 <div className="modal-content">
                                     <i class="uil uil-annoyed modalicon" style={{ width: "200px" }}></i>
-                                    <h2>Lưu Ý</h2>
-                                    <p>Vui lòng điền đầy đủ thông tin cá nhân</p>
+                                    <h2>Error</h2>
+                                    <p>Please fill in all information !</p>
                                     <button className="modal-close" onClick={toggleModal1}>
-                                        Đóng
+                                        Close
                                     </button>
                                 </div>
                             </div>
@@ -188,10 +188,10 @@ export default function RegisterPage({ }) {
                             <div className="modal">
                                 <div className="modal-content">
                                     <i class="uil uil-check-circle modalicon" style={{ width: "200px", color: 'green' }}></i>
-                                    <h2>Thành Công</h2>
-                                    <p>Bạn đã đăng kí tài khoản thành công !</p>
+                                    <h2>Success</h2>
+                                    <p>You have successfully registered an account !</p>
                                     <button className="modal-close" onClick={toggleModal2}>
-                                        Đóng
+                                        Close
                                     </button>
                                 </div>
                             </div>
@@ -200,10 +200,10 @@ export default function RegisterPage({ }) {
                             <div className="modal">
                                 <div className="modal-content">
                                     <i class="uil uil-exclamation-circle modalicon" style={{ width: "200px", color: 'red' }}></i>
-                                    <h2>Thất Bại</h2>
-                                    <p>Tài khoản đã tồn tại trong hệ thống !</p>
+                                    <h2>Error</h2>
+                                    <p>Username already exists in the system !</p>
                                     <button className="modal-close" onClick={toggleModal23}>
-                                        Đóng
+                                        Close
                                     </button>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ export default function RegisterPage({ }) {
 
 
                         <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <button style={{ width: '60%' }} className='buttonz' type="submit">Đăng Kí</button>
+                            <button style={{ width: '60%' }} className='buttonz' type="submit">Submit</button>
                         </div>
                         <div style={{ textAlign: "center", paddingTop: "10px" }}>
                             <a style={{

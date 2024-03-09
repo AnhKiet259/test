@@ -107,15 +107,15 @@ export default function SpeedInputPage() {
         <div>
             <div className='title'>
                 <i className='uil uil-tachometer-fast-alt'></i>
-                <span className='text'>Test Speed</span>
+                <span className='text'>Speed</span>
             </div>
             <div className="Speed-input1">
                 <div className="Speed-iput-container1">
-                    <h1 className="">Tốc độ động cơ mong muốn</h1>
+                    <h1 className="">Desired Engine Speed</h1>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="Speed" className="form-label1">
-                                Nhập Tốc Độ Động Cơ
+                                Enter Speed:
                             </label>
                             <input
                                 id="Speed"
@@ -131,7 +131,7 @@ export default function SpeedInputPage() {
                         </div>
                         <div className="center-align11">
                             <button type="submit" className="button3">
-                                Bắt Đầu
+                                Submit
                             </button>
                         </div>
                     </form>
@@ -142,10 +142,10 @@ export default function SpeedInputPage() {
                 <div className="modal">
                     <div className="modal-content">
                         <i class="uil uil-check-circle modalicon" style={{ width: "200px" }}></i>
-                        <h2>Thành Công</h2>
-                        <p>Tốc Độ Hiện Tại: {formValue.Speed}</p>
+                        <h2>Success</h2>
+                        <p>Current Speed: {formValue.Speed}</p>
                         <button className="modal-close" onClick={toggleModal}>
-                            Đóng
+                            Close
                         </button>
                     </div>
                 </div>
@@ -185,7 +185,7 @@ export default function SpeedInputPage() {
 
                             return (
                                 <tr key={item.id}>
-                                    <td>Động Cơ Bước</td>
+                                    <td>Stepper Motor</td>
                                     <td>{item.speed}</td>
                                     <td>{formattedDate}</td>
                                 </tr>

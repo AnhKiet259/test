@@ -184,7 +184,7 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                     </div>
 
                     <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <button style={{ width: '40%', borderRadius: '10px' }} className='buttonz' onClick={toggleModal11} >Update</button>
+                        <button style={{ width: '40%', borderRadius: '10px' }} className='buttonz' onClick={toggleModal11} >Edit</button>
                         <button style={{ width: 'auto', marginLeft: '20px', borderRadius: '10px' }} onClick={toggleModal22} className='buttonz'>Change Password</button>
                     </div>
 
@@ -211,7 +211,7 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                                             Submit
                                         </button>
                                         <button className="modal-close" style={{ marginLeft: '10px' }} onClick={toggleModal22}>
-                                            Đóng
+                                            Close
                                         </button>
                                     </div>
                                 </form>
@@ -224,24 +224,23 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                         <div className="modal">
                             <div className="modal-content">
                                 <i class="uil uil-exclamation-circle modalicon" style={{ width: "200px", color: 'red' }}></i>
-                                <h2>Thất Bại</h2>
-                                <p>Vui lòng nhập đầy đủ thông tin</p>
+                                <h2>Error</h2>
+                                <p>Please enter complete information</p>
                                 <button className="modal-close" onClick={toggleModal1111}>
-                                    Đóng
+                                    Close
                                 </button>
                             </div>
                         </div>
                     )}
 
-
                     {modalVisible111 && (
                         <div className="modal">
                             <div className="modal-content">
                                 <i class="uil uil-check-circle modalicon" style={{ width: "200px", color: 'green' }}></i>
-                                <h2>Thành Công</h2>
-                                <p>Vui lòng đăng xuất để cập nhật lại dữ liệu</p>
+                                <h2>Success</h2>
+                                <p>Please log out to update data</p>
                                 <button className="modal-close" onClick={dangxuatload}>
-                                    Đóng
+                                    Close
                                 </button>
                             </div>
                         </div>
@@ -308,7 +307,7 @@ export default function UpdateAccount({ session_username, session_firstname, ses
                                             Submit
                                         </button>
                                         <button className="modal-close" style={{ marginLeft: '10px' }} onClick={toggleModal11}>
-                                            Đóng
+                                            Close
                                         </button>
                                     </div>
                                 </form>

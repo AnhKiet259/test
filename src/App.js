@@ -27,6 +27,7 @@ const App = () => {
   const handleLogout = () => {
     document.cookie = 'isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     setIsLoggedIn(false);
+    window.location.reload(true);
   };
 
   const session_username = Cookies.get('session_username');

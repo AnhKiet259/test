@@ -164,10 +164,10 @@ export default function CreateAccAdmin({ }) {
                             <div className="modal">
                                 <div className="modal-content">
                                     <i class="uil uil-annoyed modalicon" style={{ width: "200px" }}></i>
-                                    <h2>Lưu Ý</h2>
-                                    <p>Vui lòng điền đầy đủ thông tin Admin</p>
+                                    <h2>Error</h2>
+                                    <p>Please fill in all Admin information</p>
                                     <button className="modal-close" onClick={toggleModal1}>
-                                        Đóng
+                                        Close
                                     </button>
                                 </div>
                             </div>
@@ -176,10 +176,10 @@ export default function CreateAccAdmin({ }) {
                             <div className="modal">
                                 <div className="modal-content">
                                     <i class="uil uil-check-circle modalicon" style={{ width: "200px", color: 'green' }}></i>
-                                    <h2>Thành Công</h2>
-                                    <p>Bạn đã tạo tài khoản Admin thành công !</p>
+                                    <h2>Success</h2>
+                                    <p>You have successfully created an Admin account!</p>
                                     <button className="modal-close" onClick={toggleModal2}>
-                                        Đóng
+                                        Close
                                     </button>
                                 </div>
                             </div>

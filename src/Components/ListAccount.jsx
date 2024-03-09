@@ -160,10 +160,10 @@ function ListAccount() {
                 <div className="modal">
                     <div className="modal-content">
                         <i class="uil uil-check-circle modalicon" style={{ width: "200px" }}></i>
-                        <h2>Thành Công</h2>
-                        <p>Đã Thực Hiện Thành Công</p>
+                        <h2>Success</h2>
+                        <p>Successfully Update</p>
                         <button className="modal-close" onClick={toggleModal1}>
-                            Đóng
+                            Close
                         </button>
                     </div>
                 </div>
@@ -174,13 +174,13 @@ function ListAccount() {
                     <div className="modal-content" style={{ borderRadius: '30px' }}>
                         <i class="uil uil-question-circle modalicon" style={{ width: "200px", color: "red" }}></i>
                         <h2>Confirm Delete</h2>
-                        <p>Bạn có chắc là muốn xóa người dùng này ?</p>
+                        <p>Are you sure you want to delete this user?</p>
                         <div className="confirm-modal-buttons">
                             <button className="confirm-modal-button modal-close" onClick={handleDeleteConfirm} style={{ marginRight: '10px' }}>
-                                Xóa
+                                Delete
                             </button>
                             <button className="confirm-modal-button modal-close" onClick={hideConfirmModal}>
-                                Hủy
+                                Close
                             </button>
                         </div>
                     </div>
@@ -250,7 +250,7 @@ function ListAccount() {
                         <p>First Name: {filteredData[key].firstname}</p>
                         <p>Last Name: {filteredData[key].lastname}</p>
                         <p>Email: {filteredData[key].email}</p>
-                        <p>Email: {filteredData[key].phone}</p>
+                        <p>Phone: {filteredData[key].phone}</p>
                         <div>
                             <button className='button1' onClick={() => handleUpdate(key)}>Update</button>
                             <button className='button2' onClick={() => handleDelete(key)}>Delete</button>
