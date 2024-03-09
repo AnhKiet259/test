@@ -24,7 +24,7 @@ const App = () => {
 
   const handleLogout = () => {
     document.cookie = 'isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    setIsLoggedIn(false); window.location.reload(true);
+    setIsLoggedIn(false);
   };
 
   const session_username = Cookies.get('session_username');
@@ -37,7 +37,6 @@ const App = () => {
   const session_password = Cookies.get('session_password');
 
   useEffect(() => {
-    handleLogout();
     const isLoggedInCookie = document.cookie.split(';').some((cookie) => cookie.trim().startsWith('isLoggedIn='));
     if (isLoggedInCookie) {
       setIsLoggedIn(true);
