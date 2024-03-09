@@ -482,19 +482,34 @@ tr:hover {
     background-color: #ff0000;
 }
 
-/* Responsive styles */
-@media (max-width: 767px) {
+@media (max-width: 600px) {
+
+    /* Điều chỉnh hiển thị của bảng trên màn hình nhỏ hơn 600px */
     table {
-        font-size: 14px;
+        width: 100%;
     }
 
-    th,
-    td {
-        padding: 4px;
+    table thead {
+        display: none;
+        /* Ẩn phần đầu bảng trên màn hình nhỏ hơn 600px */
     }
 
-    th {
-        padding: 8px;
+    table tbody tr {
+        display: block;
+        /* Hiển thị từng dòng của bảng dưới dạng block */
+        margin-bottom: 10px;
+    }
+
+    table tbody td {
+        display: block;
+        /* Hiển thị từng ô dữ liệu dưới dạng block */
+        text-align: left;
+    }
+
+    table tbody td:before {
+        /* Định dạng dữ liệu trước mỗi ô dữ liệu (tiêu đề của ô) */
+        content: attr(data-label);
+        font-weight: bold;
     }
 }
 
