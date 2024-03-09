@@ -225,7 +225,7 @@ const App = () => {
                   <li>
                     <a onClick={() => setCurrentPage('speedtest')}>
                       <i class="uil uil-tachometer-fast-alt"></i>
-                      <span className="link-name">Speed Test</span>
+                      <span className="link-name">Speed</span>
                     </a>
                   </li>
                   <li>
