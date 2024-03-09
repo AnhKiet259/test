@@ -6,6 +6,12 @@ import loginpic from './usav.png';
 const LoginPage = ({ setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [modalVisiblelogin, setModalVisiblelogin] = useState(false);
+
+
+    const toggleModallogin = () => {
+        setModalVisiblelogin(!modalVisiblelogin); // Toggle the modal visibility state
+    };
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -38,6 +44,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                 } else {
                     // Đăng nhập không thành công, xử lý thông báo lỗi hoặc thực hiện các hành động khác
                     console.log('Đăng nhập không thành công');
+                    toggleModallogin();
                 }
             })
             .catch(error => {
@@ -114,6 +121,19 @@ const LoginPage = ({ setIsLoggedIn }) => {
                     </a>
                 </div>
             </div>
+
+            {modalVisiblelogin && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <i class="uil uil-exclamation-circle modalicon" style={{ width: "200px", color: 'red' }}></i>
+                        <h2>Thất Bại</h2>
+                        <p>Tài Khoản hoặc mật khẩu không chính xác !</p>
+                        <button className="modal-close" onClick={toggleModallogin}>
+                            Đóng
+                        </button>
+                    </div>
+                </div>
+            )}
         </div >
     );
 };

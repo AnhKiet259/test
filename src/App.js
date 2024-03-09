@@ -13,6 +13,7 @@ const SpeedInputPage = lazy(() => import('./Components/Speed'));
 const SmallFrame = lazy(() => import('./Components/ThreeJSComponent'));
 const ChartMongo = lazy(() => import('./Components/Chart'));
 const ListAccount = lazy(() => import('./Components/ListAccount'));
+const ListAccountUS = lazy(() => import('./Components/ListAccountUS'));
 const LoginPage = lazy(() => import('./Components/Login'));
 const UpdateAccount = lazy(() => import('./Components/UpdateAccount'));
 
@@ -102,6 +103,8 @@ const App = () => {
           return <Dashboard />;
         case 'speedtest':
           return <SpeedInputPage />;
+        case 'ListAccountUS':
+          return <ListAccountUS />;
         case 'UpdateAccount':
           return <UpdateAccount
             session_username={session_username}
@@ -160,7 +163,7 @@ const App = () => {
               </div>
             </div>
             <a>
-              <span className='link-name'>{session_firstname} {session_lastname}</span>
+              <span className='link-name' style={{ fontSize: '15px' }}>{session_firstname} {session_lastname}</span>
             </a>
             <div style={{ textAlign: 'center' }}>
               <h2 className='online-text'>Online</h2>
@@ -194,6 +197,12 @@ const App = () => {
               <a onClick={() => setCurrentPage('UpdateAccount')}>
                 <i class="uil uil-estate"></i>
                 <span className="link-name">Profile</span>
+              </a>
+            </li>
+            <li>
+              <a onClick={() => setCurrentPage('ListAccountUS')}>
+                <i class="uil uil-estate"></i>
+                <span className="link-name">Search Users</span>
               </a>
             </li>
             {/* <li>
@@ -230,6 +239,16 @@ const App = () => {
 
 
           <ul className='logout-mode'>
+            <li className='mode'>
+              <a>
+                <i className='uil uil-cog'></i>
+                <span className='link-name'>Mode</span>
+              </a>
+
+              <div className='mode-toggle'>
+                <span className='switch'></span>
+              </div>
+            </li>
             {isLoggedIn ? (
               <li>
                 <a onClick={handleLogout}>
@@ -238,17 +257,6 @@ const App = () => {
                 </a>
               </li>
             ) : null}
-
-            <li className='mode'>
-              <a>
-                <i className='uil uil-moon'></i>
-                <span className='link-name'>Mode Light</span>
-              </a>
-
-              <div className='mode-toggle'>
-                <span className='switch'></span>
-              </div>
-            </li>
           </ul>
 
 
