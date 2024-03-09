@@ -80,8 +80,8 @@ function Dashboard() {
                                                 <img src={usavtar} alt="Avatar" />
                                             </div>
                                         </td>
-                                        <td>{item.firstName}</td>
-                                        <td>{item.lastName}</td>
+                                        <td>{item.firstname}</td>
+                                        <td>{item.lastname}</td>
                                         <td>{item.email}</td>
                                         <td>{formattedDate}</td>
                                     </tr>
